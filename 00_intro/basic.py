@@ -37,6 +37,11 @@ floor_div = a // b    # 3
 modulus = a % b       # 1
 power = a ** b        # 1000
 
+# Boolean logic
+greater_than = a > b         # True
+greater_than_equal = a >= b  # True
+equal_to = a == b            # False
+
 # Type Conversion
 num_str = "123"
 num = int(num_str)    # Convert string to integer
