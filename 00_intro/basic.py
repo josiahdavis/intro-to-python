@@ -217,6 +217,22 @@ def factorial(n):
 # 10. BUILT-IN FUNCTIONS (common examples)
 # ------------------------------------------------------------
 
+# Printing
+print("a message for Bob")         # "a message for Matthew"
+name = "Bob"
+print(f"a message for {name}")     # f-strings
+print(f"a message for {name=}")    # optionally, give the variable name and value
+
+age = 33                           # Multi-line string (one option)
+workplace = "University of Austin"
+message = f"""
+Hello, my name is {name}.
+I am {age} years old.
+I work at {workplace}.
+"""
+print(message)
+
+# Numbers
 numbers = [3, 7, 1, 9]
 
 minimum = min(numbers)           # 1
@@ -226,6 +242,10 @@ length = len(numbers)            # 4
 sorted_list = sorted(numbers)    # [1, 3, 7, 9]
 data_type = type(numbers)        # <class 'list'>
 
+# Random
+random_int = random.randint(1, 10)          # random integer between 1 and 10 (inclusive)
+random_float = random.random()              # random float between 0 and 1
+random_uniform = random.uniform(10.5, 20.5) # random float between 10.5 and 20.5
 
 # ------------------------------------------------------------
 # 11. MAIN EXAMPLE (for demonstration)
