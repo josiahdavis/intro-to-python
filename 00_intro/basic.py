@@ -111,18 +111,38 @@ for key, value in person.items():
 # 6. STRINGS
 # ------------------------------------------------------------
 
+# Text can be single or double quoted
 text = "python programming"
 
-# Slicing
+# Three quotes for multi-line string
+multi_line_string = """This is a string
+that spans multiple lines.
+It's very useful for long blocks of text."""
+
+# Slicing works like a list
 first_word = text[:6]            # "python"
 last_word = text[7:]             # "programming"
 
-# Methods
+# Creating list
+my_string = "abc,def,vtx,stz,dau"
+my_list1 = my_string.split(",")  # ['abc', 'def', 'vtx', 'stz', 'dau']
+my_list2 = list(my_string)       # ['a', 'b', 'c', ',', ....., 'u']
+
+# General Methods
 length = len(text)               # 18
-upper_text = text.upper()        # "PYTHON PROGRAMMING"
 contains_py = "py" in text       # True
 
-# String formatting
+
+# Cleaning
+upper_text = text.upper()          # "PYTHON PROGRAMMING"
+title_text = text.title()          # "Python Programming"
+lower_text = upper_text.lower()    # "python programming"
+"  some text  ".strip()            # "some text"
+"  some text  ".lstrip()           # "some text  "
+"  some text  ".rstrip()           # "  some text"
+"apple pie".replace("pie", "cake") # "apple cake"
+
+# Using f-strings
 name = "Bob"
 greeting = f"Hello, {name}!"     # f-string
 
