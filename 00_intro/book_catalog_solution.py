@@ -45,3 +45,20 @@ print("Books by CS Lewis:")
 matches = find_books_by_author(catalog, "CS Lewis")
 print("Results:", matches)
 print("-" * 40)
+
+# EXPECTED OUTPUT
+# 
+# Catalog After Adding Books:
+# 0. Title: The Uncontrollability of the World, Author: Hartmut Rosa
+# 1. Title: The Lord of the Rings, Author: J. R. R. Tolkien
+# 2. Title: Foundation, Author: Isaac Asimov
+# 3. Title: Dune, Author: Frank Herbert
+# 4. Title: Dune Messiah, Author: Frank Herbert
+# ----------------------------------------
+# Books by Frank Herbert:
+# - Dune
+# - Dune Messiah
+# ----------------------------------------
+# Books by CS Lewis:
+# Results: []
+# ----------------------------------------
