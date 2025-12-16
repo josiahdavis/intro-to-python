@@ -60,28 +60,8 @@ elif x > 10:
 else:
     result = "Small"
 
-
 # ------------------------------------------------------------
-# 4. LOOPS (for, while)
-# ------------------------------------------------------------
-
-# For loop (iterate over list)
-for n in [1, 2, 3]:
-    print("Number:", n)
-
-# Range example
-for i in range(5):  # 0, 1, 2, 3, 4
-    print("i =", i)
-
-# While loop
-counter = 0
-while counter < 3:
-    print("Counter is", counter)
-    counter += 1
-
-
-# ------------------------------------------------------------
-# 5. DATA STRUCTURES
+# 4. DATA STRUCTURES
 # ------------------------------------------------------------
 
 # List (mutable, ordered)
@@ -102,10 +82,37 @@ person = {
 person["age"] = 31               # Update value
 person["city"] = "Austin"        # Add new key-value pair
 
+# ------------------------------------------------------------
+# 5. LOOPS (for, while)
+# ------------------------------------------------------------
+
+# For loop (iterate over list)
+for n in [1, 2, 3]:
+    print("Number:", n)
+
+# Range example
+for i in range(5):  # 0, 1, 2, 3, 4
+    print("i =", i)
+
+# While loop
+counter = 0
+while counter < 3:
+    print("Counter is", counter)
+    counter += 1
+
+# Enumerate example
+for i, ch in enumerate(['a', 'b', 'c', 'd']):
+    print("Result: ", i, ch)
+
 # Dictionary iteration
 for key, value in person.items():
     print(key, "->", value)
 
+# Skipping iterations in a loop with continue
+for ch in ['A', 'B', 'c', 'd', 'e']:
+    if ch in ('A', 'C'):
+        continue
+    print(ch)
 
 # ------------------------------------------------------------
 # 6. STRINGS
