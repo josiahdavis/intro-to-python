@@ -77,10 +77,25 @@ x_coord = coordinates[0]
 person = {
     "name": "Alice",
     "age": 30,
-    "is_student": False
+    "is_student": False,
 }
 person["age"] = 31               # Update value
 person["city"] = "Austin"        # Add new key-value pair
+
+# List in dictionary
+person = {
+    "name": "Alice",
+    "age": 30,
+    "places_lived": ["Hong Kong", "Paris", "Washington DC"] 
+}
+
+# Dictionaries in List
+people = [
+    {"name": "Bob", "age": 42},
+    {"name": "Jack", "age": 23},
+    {"name": "John", "age": 12},
+    {"name": "George", "age": 61}
+]
 
 # ------------------------------------------------------------
 # 5. LOOPS (for, while)
