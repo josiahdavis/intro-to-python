@@ -21,7 +21,8 @@ count = 42
 temperature = 98.6
 
 # String
-message = "Hello, Python!"
+message1 = 'Hello, Python!'
+message2 = "Hello, Python!"
 
 
 # ------------------------------------------------------------
@@ -35,6 +36,7 @@ sum_val = a + b       # 13
 quotient = a / b      # 3.333...
 floor_div = a // b    # 3
 modulus = a % b       # 1
+mult = a * b          # 30
 power = a ** b        # 1000
 
 # Boolean logic
@@ -46,6 +48,8 @@ equal_to = a == b            # False
 num_str = "123"
 num = int(num_str)    # Convert string to integer
 
+bool_num = 1
+my_bool = bool(bool_num)
 
 # ------------------------------------------------------------
 # 3. CONTROL FLOW (if/elif/else)
@@ -70,15 +74,17 @@ fruits.append("date")            # Add an item
 first_fruit = fruits[0]          # Indexing
 
 # Tuple (immutable, ordered)
-coordinates = (10, 20)
+coordinates = (10, 20, 30)
 x_coord = coordinates[0]
+x_coord, y_coord, z_coord = coordinates   # Unpacking
 
-# Dictionary (key-value pairs)
+# Dictionary (key-value pairs, unordered, mutable, keys are unique)
 person = {
     "name": "Alice",
     "age": 30,
     "is_student": False,
 }
+
 person["age"] = 31               # Update value
 person["city"] = "Austin"        # Add new key-value pair
 
@@ -86,7 +92,7 @@ person["city"] = "Austin"        # Add new key-value pair
 person = {
     "name": "Alice",
     "age": 30,
-    "places_lived": ["Hong Kong", "Paris", "Washington DC"] 
+    "places_lived": ["Hong Kong", "Paris", "Washington DC"]
 }
 
 # Dictionaries in List
@@ -150,6 +156,9 @@ my_string = "abc,def,vtx,stz,dau"
 my_list1 = my_string.split(",")  # ['abc', 'def', 'vtx', 'stz', 'dau']
 my_list2 = list(my_string)       # ['a', 'b', 'c', ',', ....., 'u']
 
+# Create a string from a list
+my_string2 = "--".join(['abc', 'def', 'vtx', 'stz', 'dau'])
+
 # General Methods
 length = len(text)               # 18
 contains_py = "py" in text       # True
@@ -166,8 +175,11 @@ lower_text = upper_text.lower()    # "python programming"
 
 # Using f-strings
 name = "Bob"
-greeting = f"Hello, {name}!"     # f-string
+greeting = f"Hello, {name}!"      # f-string
+greeting = f"Hello, {name=}!"     # f-string optional with = to give name of variable
 
+name2 = ["Bob", "Alice"]
+greeting2 = f"Hello, {name2}!"    # f-string
 
 # ------------------------------------------------------------
 # 7. SLICING SYNTAX (LISTS, TUPLES, AND STRINGS)
@@ -243,6 +255,8 @@ def greet(name):
     """Return a greeting for the given name."""
     return f"Hello, {name}!"
 
+greet("Jane")
+
 def add(x, y):
     """Add two numbers."""
     return x + y
@@ -254,13 +268,19 @@ def factorial(n):
         result *= i
     return result
 
+def factorial(n: int) -> int:
+    """Compute factorial using a loop."""
+    result = 1
+    for i in range(1, n + 1):
+        result *= i
+    return result
 
 # ------------------------------------------------------------
 # 10. BUILT-IN FUNCTIONS (common examples)
 # ------------------------------------------------------------
 
 # Printing
-print("a message for Bob")         # "a message for Matthew"
+print("a message for Bob")         # "a message for Bob"
 name = "Bob"
 print(f"a message for {name}")     # f-strings
 print(f"a message for {name=}")    # optionally, give the variable name and value
@@ -275,6 +295,7 @@ I work at {workplace}.
 print(message)
 
 # Numbers
+
 numbers = [3, 7, 1, 9]
 
 minimum = min(numbers)           # 1
@@ -285,9 +306,13 @@ sorted_list = sorted(numbers)    # [1, 3, 7, 9]
 data_type = type(numbers)        # <class 'list'>
 
 # Random
+import random
 random_int = random.randint(1, 10)          # random integer between 1 and 10 (inclusive)
 random_float = random.random()              # random float between 0 and 1
 random_uniform = random.uniform(10.5, 20.5) # random float between 10.5 and 20.5
+
+from random import randint
+randint(20, 30)
 
 # ------------------------------------------------------------
 # 11. MAIN EXAMPLE (for demonstration)

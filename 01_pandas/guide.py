@@ -7,6 +7,8 @@ data, time series, categorical data, performance tips, plotting, and
 practical examples.
 """
 
+import pandas as pd
+
 # ------------------------------------------------------------
 # 1. CORE OBJECTS: DATAFRAME AND SERIES
 # ------------------------------------------------------------
@@ -75,13 +77,13 @@ subset = df[["age", "income", "state"]]
 
 # Row selection with iloc (position-based)
 first_5 = df.iloc[:5]
+first_5 = df.iloc[:5, :2]
 
 # Row/col selection with loc (label-based)
 state_age = df.loc[df.index[:5], ["state", "age"]]
 
-# Boolean selection
+# Boolean selection (more on this in next section)
 high_income = df[df["income"] > 100000]
-
 
 # ------------------------------------------------------------
 # 4. Filtering
@@ -90,12 +92,16 @@ high_income = df[df["income"] > 100000]
 # Filter by multiple conditions
 filtered = df[(df["age"] > 30) & (df["state"] == "CA")]
 
+# Creating a new column
+df["high_income_high_age"] = (df["income"] > 100000) & (df["age"] > 50)
+
 # Filter with .isin
 states_of_interest = df[df["state"].isin(["CA", "TX"])]
 
-# Filter on string operations
+# Filter on string operations 
+#   case=False means search is case insensitive
+#   na=False means treat missing values as False (default behavior leaves missing values as NaN)
 contains_us = df[df["nationality"].astype(str).str.contains("us", case=False, na=False)]
-
 
 # ------------------------------------------------------------
 # 5. Grouping & Aggregation
@@ -110,6 +116,12 @@ summary = df.groupby("state").agg(
     median_age=("age", "median"),
     count=("id", "count")
 )
+
+# Change state variable from index to column
+summary.reset_index()
+
+# Select by row index and column
+summary.loc["CA", "count"]
 
 # ------------------------------------------------------------
 # 6. Joining / Merging
@@ -136,13 +148,11 @@ missing_report = df.isna().sum()
 df_no_missing_income = df.dropna(subset=["income"])
 
 # Fill missing numeric values
-df_filled_age = df.copy()
-df_filled_age["age"] = df_filled_age["age"].fillna(df["age"].median())
+df_filled = df.copy()
+df_filled["age"] = df_filled["age"].fillna(df["age"].median())
 
 # Fill missing categorical with a placeholder
-df_filled_cat = df.copy()
-df_filled_cat["nationality"] = df_filled_cat["nationality"].fillna("Unknown")
-
+df_filled["nationality"] = df_filled["nationality"].fillna("Unknown")
 
 # ------------------------------------------------------------
 # 8. Cleaning Data
@@ -165,14 +175,6 @@ df_clean["nationality"] = df_clean["nationality"].replace({
     "Usa": "USA",
 })
 
-df_clean["state"] = df_clean["state"].replace({
-    "Tx": "TX",
-})
-
-df_clean["gender"] = df_clean["gender"].replace({
-    "Female ": "Female"
-})
-
 # ------------------------------------------------------------
 # 9. Categorical Data
 # ------------------------------------------------------------
@@ -183,14 +185,17 @@ df_cat["gender"] = df_cat["gender"].astype("category")
 
 df_cat.dtypes
 
+# Ordered example of categories
 
 # ------------------------------------------------------------
 # 10. Working With Dates
 # ------------------------------------------------------------
 
+import numpy as np
+
 # Create a synthetic date column
 df_cat["date"] = pd.to_datetime(
-    np.random.choice(pd.date_range("2010-01-01", "2024-12-31"), size=len(df_cat))
+    np.random.choice(pd.date_range("2010-01-01", "2024-12-31"), size=df_cat.shape[0])
 )
 
 # Extract date parts
