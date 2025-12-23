@@ -4,10 +4,10 @@ To get started, run the following setup commands
 
 ```
 # Create virtual environment
-python -m venv python-training
+python -m venv .venv
 
 # Activate virtual environment
-source ./python-training/bin/activate
+source ./.venv/bin/activate
 
 # Install pandas and other dependencies
 pip install pandas numpy ipython
